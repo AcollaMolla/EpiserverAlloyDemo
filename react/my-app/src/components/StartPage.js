@@ -24,8 +24,8 @@ class StartPage extends Component{
 	
 	render(){
 		return(
-			<div>
-			{this.state.PageDescription ? <p>{this.state.PageDescription}</p> : <p>Loading...</p>}
+			<div class="page-description">
+				{this.state.PageDescription ? <p>{this.state.PageDescription}</p> : <p>Loading...</p>}
 			</div>
 		);
 	}
