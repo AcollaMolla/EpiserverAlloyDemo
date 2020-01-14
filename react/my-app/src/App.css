@@ -32,6 +32,14 @@
 	width:70%;
 }
 
+.row {
+    margin-bottom:1%;
+}
+
+.equal-height .teaserblock .border {
+    min-height: 245px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

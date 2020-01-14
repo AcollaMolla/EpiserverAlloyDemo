@@ -24,8 +24,10 @@ class StartPage extends Component{
 	
 	render(){
 		return(
-			<div class="page-description">
-				{this.state.PageDescription ? <p>{this.state.PageDescription}</p> : <p>Loading...</p>}
+			<div class="row equal-height">
+				<div class="page-description">
+					{this.state.PageDescription ? <p>{this.state.PageDescription}</p> : <p>Loading...</p>}
+				</div>
 			</div>
 		);
 	}
