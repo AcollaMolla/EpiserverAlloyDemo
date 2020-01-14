@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import './App.css';
 import Startpage from './components/StartPage.js';
+import Header from './components/Header.js';
 
 class App extends Component{
 	constructor(props){
 		super(props)
 		this.state = {
 			StartPageID: null,
-			ImageURL: null
+			ImageURL: null,
+			children: []
 		}
 	}
 	
@@ -30,6 +32,14 @@ class App extends Component{
 				.then(response => response.json())
 				.then((responseData) =>
 				{this.setState({ImageURL : responseData.siteLogotype.url.value})})
+					fetch(this.props.apiBase + '/content/' + this.state.StartPageID + '/children', {
+						headers: {
+							'Accept': 'application/json',
+							'Accept-Language': 'en'
+						}
+					})
+					.then( response => response.json() )
+					.then( (responseData) => this.setState({children : [...responseData]}))
 			})
 		}
 	}
@@ -37,10 +47,9 @@ class App extends Component{
 	render(){
 		return(
 			<div className="App">
-			<header className="App-header">
+				{this.state.children ? <Header pages={this.state.children} StartPageId={ this.state.StartPageId }/> : <p>Loading...</p>}
 				<img src={'http://localhost:58645/' + this.state.ImageURL} className="App-logo" alt="logo" />
 				<Startpage apiBase={this.props.apiBase} startPageID={5} />
-			</header>
 			</div>
 		);
 	}
