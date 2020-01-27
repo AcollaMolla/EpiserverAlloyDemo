@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
+import JumbotronBlock from './blocks/JumbotronBlock';
 
 class StartPage extends Component{
 	constructor(props) {
 		super(props)
 		this.state = {
-			PageDescription: null
+			PageDescription: null,
+			MainContentAreaItems: null
 		}
 	}
 	
 	componentDidMount(){
-		console.log(this.props.apiBase);
-		console.log(this.props.startPageID);
 			fetch(this.props.apiBase + '/content/' + this.props.startPageID, {
 				headers:{
 					'Accept': 'application/json',
@@ -19,15 +19,17 @@ class StartPage extends Component{
 			})
 			.then( response => response.json() )
 			.then( (responseData) =>
-			{this.setState({PageDescription : responseData.teaserText.value })})
+			{this.setState({PageDescription : responseData.teaserText.value, MainContentAreaItems : responseData.mainContentArea.value })})
 	}
 	
 	render(){
 		return(
-			<div class="row equal-height">
-				<div class="page-description">
-					{this.state.PageDescription ? <p>{this.state.PageDescription}</p> : <p>Loading...</p>}
+			<div className="container">
+				<div className="row"></div>
+				<div className="row equal-height">
+						{this.state.MainContentAreaItems ? <JumbotronBlock data={this.state.MainContentAreaItems[0]}/> : null}
 				</div>
+				<div className="row"></div>
 			</div>
 		);
 	}
