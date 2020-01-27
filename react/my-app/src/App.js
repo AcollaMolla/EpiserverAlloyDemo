@@ -52,7 +52,6 @@ class App extends Component{
 		return(
 		<Router>
 			<div className="App">
-				{this.state.children ? <Header pages={this.state.children} StartPageId={ this.state.StartPageId }/> : <p>Loading...</p>}
 				<img src={'http://localhost:58645/' + this.state.ImageURL} className="App-logo" alt="logo" />
 				<Startpage apiBase={this.props.apiBase} startPageID={5} />
 			</div>
@@ -61,25 +60,4 @@ class App extends Component{
 	}
 }
 
-/*function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-*/
 export default App;

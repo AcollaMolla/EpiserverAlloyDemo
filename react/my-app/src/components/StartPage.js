@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import JumbotronBlock from './blocks/JumbotronBlock';
+import Block from './blocks/Block';
 
 class StartPage extends Component{
 	constructor(props) {
@@ -27,7 +27,7 @@ class StartPage extends Component{
 			<div className="container">
 				<div className="row"></div>
 				<div className="row equal-height">
-						{this.state.MainContentAreaItems ? <JumbotronBlock data={this.state.MainContentAreaItems[0]}/> : null}
+						{this.state.MainContentAreaItems ? <Block apiBase={this.props.apiBase} children={this.state.MainContentAreaItems}/> : null}
 				</div>
 				<div className="row"></div>
 			</div>
