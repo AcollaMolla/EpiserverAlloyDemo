@@ -10,7 +10,6 @@ class Block extends Component{
     }
 
     componentDidMount(){
-        let items = [];
         this.props.children.forEach(element => {
             fetch(this.props.apiBase + '/content/' + element.contentLink.id, {
                 headers:{
